@@ -1,0 +1,14 @@
+{
+  "name": "laundry-delivery-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root orchestrator for Laundry Delivery System microservices",
+  "scripts": {
+    "install:all": "npm install --prefix api-gateway && npm install --prefix customer-service && npm install --prefix order-service && npm install --prefix pickup-delivery-service && npm install --prefix payment-service && npm install --prefix laundry-processing-service",
+    "dev": "concurrently -n gateway,customer,order,delivery,payment,laundry -c cyan,green,yellow,magenta,blue,white \"npm run dev --prefix api-gateway\" \"npm run dev --prefix customer-service\" \"npm run dev --prefix order-service\" \"npm run dev --prefix pickup-delivery-service\" \"npm run dev --prefix payment-service\" \"npm run dev --prefix laundry-processing-service\"",
+    "start": "concurrently -n gateway,customer,order,delivery,payment,laundry -c cyan,green,yellow,magenta,blue,white \"npm run start --prefix api-gateway\" \"npm run start --prefix customer-service\" \"npm run start --prefix order-service\" \"npm run start --prefix pickup-delivery-service\" \"npm run start --prefix payment-service\" \"npm run start --prefix laundry-processing-service\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
