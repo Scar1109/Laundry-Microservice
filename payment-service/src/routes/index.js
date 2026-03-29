@@ -8,6 +8,10 @@ const {
 
 const router = express.Router();
 const BASE_PATH = '/api/payments';
+const paymentRoutes = require('./paymentRoutes');
+
+// Mount domain routes
+router.use(BASE_PATH, paymentRoutes);
 
 /**
  * @swagger
