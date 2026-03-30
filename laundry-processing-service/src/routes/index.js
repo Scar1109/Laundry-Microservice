@@ -93,4 +93,6 @@ router.get(BASE_PATH, getDomainRoot);
  */
 router.get(BASE_PATH + '/health', getDomainHealth);
 
+router.use(BASE_PATH, require('./laundryRoutes'));
+
 module.exports = router;
