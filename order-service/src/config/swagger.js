@@ -26,7 +26,7 @@ const buildSwaggerSpec = () => {
       tags: [
         {
           name: SERVICE_TAG,
-          description: SERVICE_TAG + ' service health and base endpoints'
+          description: SERVICE_TAG + ' service health and management endpoints'
         }
       ],
       components: {
