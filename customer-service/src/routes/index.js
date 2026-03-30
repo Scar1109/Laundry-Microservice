@@ -5,6 +5,7 @@ const {
   getDomainRoot,
   getDomainHealth
 } = require('../controllers/healthController');
+const customerRoutes = require('./customerRoutes');
 
 const router = express.Router();
 const BASE_PATH = '/api/customers';
@@ -92,5 +93,7 @@ router.get(BASE_PATH, getDomainRoot);
  *               message: Customers API health check passed.
  */
 router.get(BASE_PATH + '/health', getDomainHealth);
+
+router.use(BASE_PATH, customerRoutes);
 
 module.exports = router;
