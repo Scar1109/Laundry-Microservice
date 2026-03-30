@@ -16,10 +16,54 @@ const createServiceProxy = (target, basePath) => {
   });
 };
 
-router.use('/api/customers', createServiceProxy(process.env.CUSTOMER_SERVICE_URL, '/api/customers'));
-router.use('/api/orders', createServiceProxy(process.env.ORDER_SERVICE_URL, '/api/orders'));
-router.use('/api/deliveries', createServiceProxy(process.env.DELIVERY_SERVICE_URL, '/api/deliveries'));
-router.use('/api/payments', createServiceProxy(process.env.PAYMENT_SERVICE_URL, '/api/payments'));
-router.use('/api/laundry', createServiceProxy(process.env.LAUNDRY_SERVICE_URL, '/api/laundry'));
+const createSwaggerUiProxy = (target) => {
+  return createProxyMiddleware({
+    target,
+    changeOrigin: true,
+    pathRewrite: (path) => {
+      if (path === '/' || path === '') {
+        return '/api-docs';
+      }
+      return '/api-docs' + path;
+    }
+  });
+};
+
+const createSwaggerJsonProxy = (target) => {
+  return createProxyMiddleware({
+    target,
+    changeOrigin: true,
+    pathRewrite: () => '/api-docs.json'
+  });
+};
+
+const serviceProxyConfigs = [
+  {
+    gatewayBasePath: '/api/customers',
+    target: process.env.CUSTOMER_SERVICE_URL
+  },
+  {
+    gatewayBasePath: '/api/orders',
+    target: process.env.ORDER_SERVICE_URL
+  },
+  {
+    gatewayBasePath: '/api/deliveries',
+    target: process.env.DELIVERY_SERVICE_URL
+  },
+  {
+    gatewayBasePath: '/api/payments',
+    target: process.env.PAYMENT_SERVICE_URL
+  },
+  {
+    gatewayBasePath: '/api/laundry',
+    target: process.env.LAUNDRY_SERVICE_URL
+  }
+];
+
+serviceProxyConfigs.forEach(({ gatewayBasePath, target }) => {
+  router.use(gatewayBasePath + '/api-docs.json', createSwaggerJsonProxy(target));
+  router.use(gatewayBasePath + '/api-docs', createSwaggerUiProxy(target));
+  router.use(gatewayBasePath, createServiceProxy(target, gatewayBasePath));
+});
 
 module.exports = router;

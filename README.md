@@ -49,6 +49,11 @@ It provides a clean, modular starting point for a multi-member team to implement
 - Pickup & Delivery: http://localhost:3003/health
 - Payment: http://localhost:3004/health
 - Laundry Processing: http://localhost:3005/health
+- Customer Swagger UI: http://localhost:3001/api-docs
+- Order Swagger UI: http://localhost:3002/api-docs
+- Pickup & Delivery Swagger UI: http://localhost:3003/api-docs
+- Payment Swagger UI: http://localhost:3004/api-docs
+- Laundry Processing Swagger UI: http://localhost:3005/api-docs
 
 ### Gateway Access
 - Gateway health: http://localhost:3000/health
@@ -57,3 +62,13 @@ It provides a clean, modular starting point for a multi-member team to implement
 - Delivery health via gateway: http://localhost:3000/api/deliveries/health
 - Payment health via gateway: http://localhost:3000/api/payments/health
 - Laundry health via gateway: http://localhost:3000/api/laundry/health
+- Customer Swagger UI via gateway: http://localhost:3000/api/customers/api-docs
+- Order Swagger UI via gateway: http://localhost:3000/api/orders/api-docs
+- Delivery Swagger UI via gateway: http://localhost:3000/api/deliveries/api-docs
+- Payment Swagger UI via gateway: http://localhost:3000/api/payments/api-docs
+- Laundry Swagger UI via gateway: http://localhost:3000/api/laundry/api-docs
+- Customer Swagger JSON via gateway: http://localhost:3000/api/customers/api-docs.json
+- Order Swagger JSON via gateway: http://localhost:3000/api/orders/api-docs.json
+- Delivery Swagger JSON via gateway: http://localhost:3000/api/deliveries/api-docs.json
+- Payment Swagger JSON via gateway: http://localhost:3000/api/payments/api-docs.json
+- Laundry Swagger JSON via gateway: http://localhost:3000/api/laundry/api-docs.json
