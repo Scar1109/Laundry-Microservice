@@ -2,12 +2,15 @@ const express = require('express');
 const {
   getRoot,
   getHealth,
-  getDomainRoot,
   getDomainHealth
 } = require('../controllers/healthController');
 
 const router = express.Router();
 const BASE_PATH = '/api/deliveries';
+const deliveryRoutes = require('./deliveryRoutes');
+
+// Mount domain routes
+router.use(BASE_PATH, deliveryRoutes);
 
 /**
  * @swagger
@@ -50,27 +53,6 @@ router.get('/', getRoot);
  *               message: pickup-delivery-service is healthy.
  */
 router.get('/health', getHealth);
-
-/**
- * @swagger
- * /api/deliveries:
- *   get:
- *     summary: Domain base endpoint
- *     tags: [Deliveries]
- *     responses:
- *       200:
- *         description: Domain API base route info
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/StandardResponse'
- *             example:
- *               service: pickup-delivery-service
- *               status: OK
- *               timestamp: '2026-01-01T00:00:00Z'
- *               message: Deliveries API base route is active.
- */
-router.get(BASE_PATH, getDomainRoot);
 
 /**
  * @swagger

@@ -16,11 +16,11 @@ const getHealth = (req, res) => {
 };
 
 const getDomainRoot = (req, res) => {
-  res.status(200).json(buildResponse('Pickup & Delivery API base route is active.'));
+  res.status(200).json(buildResponse('Deliveries API base route is active.'));
 };
 
 const getDomainHealth = (req, res) => {
-  res.status(200).json(buildResponse('Pickup & Delivery API health check passed.'));
+  res.status(200).json(buildResponse('Deliveries API health check passed.'));
 };
 
 module.exports = {
