@@ -22,7 +22,7 @@ const createSwaggerUiProxy = (target) => {
     changeOrigin: true,
     pathRewrite: (path) => {
       if (path === '/' || path === '') {
-        return '/api-docs';
+        return '/api-docs/';
       }
       return '/api-docs' + path;
     }
