@@ -18,7 +18,7 @@ const limiter = rateLimit({
   legacyHeaders: false
 });
 
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());

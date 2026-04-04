@@ -36,3 +36,13 @@ N/A
 1. Install dependencies: npm install
 2. Start in development mode: npm run dev
 3. Start in production mode: npm start
+
+## Troubleshooting: Swagger "Failed to fetch"
+- Ensure all gateway target URLs in `.env` include a valid scheme:
+  - `CUSTOMER_SERVICE_URL=http://localhost:3001`
+  - `ORDER_SERVICE_URL=http://localhost:3002`
+  - `DELIVERY_SERVICE_URL=http://localhost:3003`
+  - `PAYMENT_SERVICE_URL=http://localhost:3004`
+  - `LAUNDRY_SERVICE_URL=http://localhost:3005`
+- If a URL is missing `http://` or `https://`, gateway startup will now fail fast with a clear error message.
+- Gateway Swagger JSON is rewritten to use gateway-relative server URLs, so "Try it out" routes through the gateway and avoids browser CORS/origin issues.

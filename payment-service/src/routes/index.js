@@ -10,9 +10,6 @@ const router = express.Router();
 const BASE_PATH = '/api/payments';
 const paymentRoutes = require('./paymentRoutes');
 
-// Mount domain routes
-router.use(BASE_PATH, paymentRoutes);
-
 /**
  * @swagger
  * /:
@@ -96,5 +93,8 @@ router.get(BASE_PATH, getDomainRoot);
  *               message: Payments API health check passed.
  */
 router.get(BASE_PATH + '/health', getDomainHealth);
+
+// Mount domain routes after static domain health path to avoid route shadowing (e.g. "/health" vs "/:id").
+router.use(BASE_PATH, paymentRoutes);
 
 module.exports = router;

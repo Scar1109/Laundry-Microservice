@@ -91,34 +91,6 @@ router.post('/', paymentController.createPayment);
 
 /**
  * @swagger
- * /api/payments/{id}:
- *   get:
- *     summary: Get payment by ID
- *     tags: [Payments]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: The payment ID
- *     responses:
- *       200:
- *         description: Payment details
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   $ref: '#/components/schemas/Payment'
- *       404:
- *         description: Payment not found
- */
-router.get('/:id', paymentController.getPaymentById);
-
-/**
- * @swagger
  * /api/payments/order/{orderId}:
  *   get:
  *     summary: Get payment by Order ID
@@ -144,6 +116,34 @@ router.get('/:id', paymentController.getPaymentById);
  *         description: Payment not found for this order
  */
 router.get('/order/:orderId', paymentController.getPaymentByOrderId);
+
+/**
+ * @swagger
+ * /api/payments/{id}:
+ *   get:
+ *     summary: Get payment by ID
+ *     tags: [Payments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The payment ID
+ *     responses:
+ *       200:
+ *         description: Payment details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   $ref: '#/components/schemas/Payment'
+ *       404:
+ *         description: Payment not found
+ */
+router.get('/:id', paymentController.getPaymentById);
 
 /**
  * @swagger

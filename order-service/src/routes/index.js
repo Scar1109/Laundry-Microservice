@@ -9,9 +9,6 @@ const router = express.Router();
 const BASE_PATH = '/api/orders';
 const orderRoutes = require('./orderRoutes');
 
-// Mount domain routes
-router.use(BASE_PATH, orderRoutes);
-
 /**
  * @swagger
  * /:
@@ -74,5 +71,8 @@ router.get('/health', getHealth);
  *               message: Orders API health check passed.
  */
 router.get(BASE_PATH + '/health', getDomainHealth);
+
+// Mount domain routes after static domain health path to avoid route shadowing (e.g. "/health" vs "/:id").
+router.use(BASE_PATH, orderRoutes);
 
 module.exports = router;
