@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
+const setupGatewaySwagger = require('./config/swagger');
 const gatewayRoutes = require('./routes/gatewayRoutes');
 const notFound = require('./middlewares/notFound');
 const errorHandler = require('./middlewares/errorHandler');
@@ -13,6 +14,7 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+setupGatewaySwagger(app);
 
 app.get('/', (req, res) => {
   res.status(200).json({

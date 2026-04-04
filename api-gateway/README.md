@@ -19,6 +19,7 @@ N/A
   - /api/payments -> payment-service
   - /api/laundry -> laundry-processing-service
 - Swagger UI via Gateway:
+  - /api-docs -> aggregated Swagger UI for all services
   - /api/customers/api-docs -> customer-service /api-docs
   - /api/orders/api-docs -> order-service /api-docs
   - /api/deliveries/api-docs -> pickup-delivery-service /api-docs
